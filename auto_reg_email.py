@@ -96,16 +96,16 @@ def check_account():
         fr.find_element_by_id('answer').send_keys(answer)
 
         # каптча 2.0
-        res_post = requests.post(f'http://rucaptcha.com/in.php?key=4c68ef4e9afa9f0b963599a121952937&method=userrecaptcha&googlekey=6LeHeSkUAAAAANUvgxwQ6HOLXCT6w6jTtuJhpLU7&pageurl={url}')
+        res_post = requests.post(f'http://rucaptcha.com/in.php?key=скрыт&method=userrecaptcha&googlekey=6LeHeSkUAAAAANUvgxwQ6HOLXCT6w6jTtuJhpLU7&pageurl={url}')
         print(res_post.text)
         print_res = res_post.text
         res_post = print_res.replace("OK|", "")
-        result = requests.get(f'http://rucaptcha.com/res.php?key=4c68ef4e9afa9f0b963599a121952937&action=get&id={res_post}')
+        result = requests.get(f'http://rucaptcha.com/res.php?key=скрыт&action=get&id={res_post}')
 
         while result.text == "CAPCHA_NOT_READY":
             time.sleep(5)
             print(result.text)
-            result = requests.get(f'http://rucaptcha.com/res.php?key=4c68ef4e9afa9f0b963599a121952937&action=get&id={res_post}')
+            result = requests.get(f'http://rucaptcha.com/res.php?key=скрыт&action=get&id={res_post}')
 
         token = result.text
         new_token = token.replace("OK|", "")
